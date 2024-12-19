@@ -10,9 +10,11 @@ import org.haigh.view.BaseUI;
 import org.haigh.view.home.tab.register_course.*;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,9 @@ public class ToolFrame extends AFrame implements BaseUI,ObserverTool, INotifyObs
     private List<Object[]> dataNow,dataSelected;
     private List<String> dataSelectedUseTool ;
     private JButton btnRegister;
+    private JFormattedTextField secondField;
 
+    JSpinner spinner ;
     private TableCourseModel tableCourseModelSelected;
     private TableCourseModel tableCourseModelNow;
     private TableCourse tableCourseSelected;
@@ -70,8 +74,28 @@ public class ToolFrame extends AFrame implements BaseUI,ObserverTool, INotifyObs
         // Phần 3
         gbc.weighty = 2; // Phần thứ ba chiếm 2 phần
         gbc.gridy = 2; // Chuyển xuống hàng tiếp theo
+
+        NumberFormat format = NumberFormat.getInstance();
+        NumberFormatter formatter = new NumberFormatter(format);
+        formatter.setValueClass(Integer.class);
+        formatter.setMinimum(0); // Giá trị tối thiểu
+        formatter.setMaximum(100); // Giá trị tối đa
+        formatter.setAllowsInvalid(false);
+        formatter.setCommitsOnValidEdit(true);
+        secondField = new JFormattedTextField(formatter);
+        secondField.setValue(1000);
+        SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 100, 1);
+        spinner = new JSpinner(model);
         btnRegister = new JButton("Đăng ký");
-        this.add(btnRegister, gbc);
+        JPanel footer = new JPanel();
+        footer.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        footer.add(new JLabel("Độ trễ: "));
+        footer.add(secondField);
+        footer.add(new JLabel("Lặp: "));
+        footer.add(spinner);
+        footer.add(btnRegister);
+        this.add(footer, gbc);
         checkBoxCourseController = new CheckBoxCourseController(tableCourseNow);
 
     }
@@ -94,7 +118,7 @@ public class ToolFrame extends AFrame implements BaseUI,ObserverTool, INotifyObs
                         }
                     }
                 }
-                registCallAPI.call(res);
+                registCallAPI.call(res, (Integer) secondField.getValue(),(int)spinner.getValue());
             }
         });
     }
