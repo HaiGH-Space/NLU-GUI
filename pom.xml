@@ -25,9 +25,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.haigh</groupId>
+            <groupId>com.github.HaiGH-Space</groupId>
             <artifactId>api-nlu-java</artifactId>
-            <version>0.1.2-SNAPSHOT</version>
+            <version>0.0.3</version>
         </dependency>
     </dependencies>
     <build>
