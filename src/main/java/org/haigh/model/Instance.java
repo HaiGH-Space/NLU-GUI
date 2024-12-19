@@ -11,16 +11,24 @@ import java.nio.file.Paths;
 public class Instance {
     public static final Gson gson = new Gson();
     public static final API API = new API();
-    public static final Account ACCOUNT = readAccountJSON();
+    public static Account ACCOUNT = readAccountJSON();
 
     public static boolean writeAccountJSON(String username,String password) {
+        if (ACCOUNT==null) {
+            ACCOUNT = new Account();
+        }
         ACCOUNT.setUsername(username);
         ACCOUNT.setPassword(password);
-        String dbDir = "db";
-        String outputFilePath = Paths.get(dbDir, "account.json").toString();
-
+        String dbDir = "account.json";
+        File file = new File(dbDir);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+            }
+        }
         // Ghi nội dung vào file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(dbDir))) {
             writer.write(gson.toJson(ACCOUNT));
             return true;
         } catch (IOException e) {
@@ -28,13 +36,21 @@ public class Instance {
         }
     }
     public static Account readAccountJSON() {
-        String dbDir = "db";
-       try {
-            String json = new String(Files.readAllBytes(Paths.get(dbDir, "account.json")));
-            return gson.fromJson(json,Account.class);
-        }catch (Exception e) {
-           e.printStackTrace();
-       }
+        String dbDir = "account.json";
+        File file = new File(dbDir);
+        if (file.exists()) {
+            String json = "";
+            try (BufferedReader reader = new BufferedReader(new FileReader(dbDir))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    json += line;
+                }
+                return gson.fromJson(json, Account.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         return null;
     }
 }

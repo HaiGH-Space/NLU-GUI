@@ -76,8 +76,10 @@ public class LoginPage extends APanel {
         containerCenter.add(Box.createVerticalStrut(15));
         containerCenter.add(btnLogin);
         Account account = Instance.ACCOUNT;
-        txtPassword.setText(account.getPassword());
-        txtUsername.setText(account.getUsername());
+        if (account!=null) {
+            txtPassword.setText(account.getPassword());
+            txtUsername.setText(account.getUsername());
+        }
         this.add(containerCenter);
     }
     public boolean isRememberMe(){
