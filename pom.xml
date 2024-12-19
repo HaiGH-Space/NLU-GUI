@@ -5,6 +5,12 @@
     <artifactId>nlu-gui</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/HaiGH-Space/API-NLU-JAVA</url>
+        </repository>
+    </repositories>
     <properties>
             <github.username>HaiGH-Space</github.username>
             <github.repository>NLU-GUI</github.repository>
@@ -30,28 +36,4 @@
             <version>0.0.3</version>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <configuration>
-                    <tagNameFormat>@{project.version}</tagNameFormat>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/HaiGH-Space/API-NLU-JAVA</url>
-        </repository>
-    </repositories>
-    <scm>
-        <connection>scm:git:https://github.com/${github.username}/${github.repository}.git</connection>
-        <developerConnection>scm:git:https://github.com/${github.username}/${github.repository}.git</developerConnection>
-        <url>https://github.com/${github.username}/${github.repository}</url>
-        <tag>HEAD</tag>
-    </scm>
 </project>
