@@ -31,7 +31,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.HaiGH-Space</groupId>
+            <groupId>io.github.haigh-space</groupId>
             <artifactId>api-nlu-java</artifactId>
             <version>1.0.0</version>
         </dependency>
