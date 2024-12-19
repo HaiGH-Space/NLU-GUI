@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.haigh</groupId>
             <artifactId>api-nlu-java</artifactId>
-            <version>0.1</version>
+            <version>0.1.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
@@ -44,8 +44,15 @@
     </build>
     <repositories>
         <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
             <id>github</id>
             <url>https://maven.pkg.github.com/${github.username}/API-NLU-JAVA</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
     <scm>
