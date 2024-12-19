@@ -17,10 +17,8 @@ public class OpenToolController extends  ACourseController implements SubjectToo
     private RegisterCourseTab registerCourseTab;
     private ToolFrame toolFrame;
     private List<ObserverTool> observerTools;
-    private List<Object[]> dataSelected;
     public OpenToolController(RegisterCourseTab registerCourseTab) {
         super(registerCourseTab);
-        dataSelected = new ArrayList<>();
         observerTools = new ArrayList<>();
         toolFrame = new ToolFrame(registerCourseTab);
         addObserverTool(toolFrame);
@@ -39,41 +37,20 @@ public class OpenToolController extends  ACourseController implements SubjectToo
 
     @Override
     public void addObserverTool(ObserverTool observer) {
-        this.observerTools.add(observer);
+
     }
 
     @Override
     public void removeObserverTool(ObserverTool observer) {
-        this.observerTools.remove(observer);
+
     }
 
     @Override
     public void notifyObserversTool(Object[] message, int status) {
-        if (status==0) {
-            boolean contain = false;
-            for (Object[] data : dataSelected) {
-                if (message[0].equals(data[0])) {
-                    contain = true;
-                    break;
-                }
-            }
-            if (!contain) {
-                dataSelected.add(message);
-            }
-        }else {
-            for (Object[] data : dataSelected) {
-                if (message[0].equals(data[0])) {
-                    dataSelected.remove(data);
-                    break;
-                }
-            }
-        }
-        for (ObserverTool observerTool  : observerTools) {
-            observerTool.update(dataSelected);
-        }
+            toolFrame.update(message,status);
     }
 
     public List<Object[]> getDataSelected() {
-        return dataSelected;
+        return toolFrame.getDataSelected();
     }
 }

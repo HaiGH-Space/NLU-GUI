@@ -15,6 +15,8 @@ public class TableCourse extends JTable {
         this.setShowGrid(true);
         this.setRowHeight(30);
         this.setGridColor(Color.BLACK);
+        this.setDragEnabled(false);
+        this.getTableHeader().setReorderingAllowed(false);
         this.setIntercellSpacing(new Dimension(1, 1));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);

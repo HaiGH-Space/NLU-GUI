@@ -13,8 +13,8 @@ public class HomePage extends APanel {
     private HeaderPanel headerPanel;
     private JTabbedPane  tabbedPane;
 
-    private static RegisterCourseTab registerCourseTab;
-    private static RegistrationResultsTab registrationResultsTab;
+    private RegisterCourseTab registerCourseTab;
+    private RegistrationResultsTab registrationResultsTab;
 
     public HomePage(Application application) {
         super(application);

@@ -1,6 +1,6 @@
 package org.haigh.controller.register_course;
 
-import org.haigh.view.home.tab.register_course.TableCoursePopupMenu;
+import org.haigh.controller.INotifyObs;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,10 +8,11 @@ import java.awt.event.ActionEvent;
 
 public class PopupMenuController extends ACourseController {
     private JMenuItem menuAdd,menuRemove;
-    public PopupMenuController(TableCoursePopupMenu tableCoursePopupMenu) {
-        super(tableCoursePopupMenu.getRegisterCourseTab());
-        this.menuAdd = tableCoursePopupMenu.getMenuAddSelectedList();
-        this.menuRemove = tableCoursePopupMenu.getMenuRemoveSelectedList();
+    private INotifyObs notifyObs;
+    public PopupMenuController(INotifyObs notifyObs,JTable table) {
+        super(null);
+        this.table = table;
+        this.notifyObs = notifyObs;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -22,7 +23,7 @@ public class PopupMenuController extends ACourseController {
                 rowData[i] = table.getValueAt(selectedRow, i);
             }
             table.repaint();
-            registerCourseTab.notifyObserversTool(rowData , e.getSource().equals(menuAdd)?0:1);
+            notifyObs.notifyObserversTool(rowData , e.getActionCommand().equals("Add")?0:1);
         }
     }
 }

@@ -1,10 +1,10 @@
 package org.haigh.view.home.tab.register_course;
 
+import org.haigh.controller.INotifyObs;
 import org.haigh.controller.register_course.CheckBoxCourseController;
 import org.haigh.controller.register_course.OpenToolController;
 import org.haigh.controller.register_course.RefreshCourseController;
-import org.haigh.tool.ObserverTool;
-import org.haigh.tool.SubjectTool;
+
 import org.haigh.view.APanel;
 import org.haigh.view.Application;
 import org.haigh.view.footer.FooterPanel;
@@ -12,12 +12,9 @@ import org.haigh.view.footer.FooterPanel;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterCourseTab extends APanel  {
+public class RegisterCourseTab extends APanel implements INotifyObs {
     private static String[] columnNames = {"", "Đăng ký", "Mã môn", "Tên môn", "Số tc", "Nhóm tổ", "Lớp", "Cl", "Sl", "Thời khóa biểu"};
     private Object[][] data = {};
     private JButton btnOpenTool;
@@ -41,7 +38,7 @@ public class RegisterCourseTab extends APanel  {
         this.setLayout(new BorderLayout());
         tableCourseModel = new TableCourseModel(data, columnNames);
         tableCourse = new TableCourse(tableCourseModel);
-        tableCoursePopupMenu = new TableCoursePopupMenu(this);
+        tableCoursePopupMenu = new TableCoursePopupMenu(this,tableCourse);
         tableCourse.setComponentPopupMenu(tableCoursePopupMenu);
         tableCourse.setDefaultRenderer(Object.class, new CustomTableCellRenderer(this));
         tableCourse.getColumnModel().getColumn(1).setCellRenderer(new CheckboxRenderer());
@@ -72,6 +69,7 @@ public class RegisterCourseTab extends APanel  {
         btnOpenTool.addActionListener(openToolController);
 //        tableCourse.addMouseListener(checkBoxCourseController);
     }
+    @Override
     public void notifyObserversTool(Object[] data,int status){
         openToolController.notifyObserversTool(data,status);
     }
@@ -81,7 +79,7 @@ public class RegisterCourseTab extends APanel  {
     public void refresh() {
         refreshCourseController.refresh(false);
     }
-    class CheckboxRenderer extends DefaultTableCellRenderer {
+    public class CheckboxRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
             JCheckBox cell = new JCheckBox();

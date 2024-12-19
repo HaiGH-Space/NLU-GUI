@@ -12,8 +12,10 @@ public class ACourseController implements ActionListener , MouseListener, MouseM
     protected JTable table;
     public ACourseController(RegisterCourseTab registerCourseTab){
         this.registerCourseTab = registerCourseTab;
-        this.model = registerCourseTab.getTableCourseModel();
-        this.table = registerCourseTab.getTableCourse();
+        if (registerCourseTab!=null) {
+            this.model = registerCourseTab.getTableCourseModel();
+            this.table = registerCourseTab.getTableCourse();
+        }
     }
 
     @Override
