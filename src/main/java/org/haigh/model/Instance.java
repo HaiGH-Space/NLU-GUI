@@ -5,8 +5,7 @@ import haigh.api.nlu.API;
 import haigh.api.nlu.util.ConstantUtil;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 
 public class Instance {
     public static final Gson gson = new Gson();
