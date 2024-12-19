@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 db/account.json
+
 ### IntelliJ IDEA ###
 .idea
 .idea/modules.xml
