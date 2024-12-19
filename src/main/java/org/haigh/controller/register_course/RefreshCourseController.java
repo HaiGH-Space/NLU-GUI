@@ -5,22 +5,17 @@ import haigh.api.nlu.model.InformationCenter;
 import haigh.api.nlu.model.Subject;
 import org.haigh.model.Instance;
 import org.haigh.view.Application;
+import org.haigh.view.footer.IRefresh;
 import org.haigh.view.home.tab.register_course.RegisterCourseTab;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
 
-public class RefreshCourseController implements ActionListener {
-    RegisterCourseTab registerCourseTab;
-    DefaultTableModel model;
-
+public class RefreshCourseController extends ACourseController implements IRefresh {
     public RefreshCourseController(RegisterCourseTab registerCourseTab) {
-        this.registerCourseTab = registerCourseTab;
-        this.model = registerCourseTab.getTableCourseModel();
+       super(registerCourseTab);
     }
 
     @Override
@@ -28,6 +23,7 @@ public class RefreshCourseController implements ActionListener {
         refresh(true);
     }
 
+    @Override
     public void refresh(boolean isShow) {
         String message;
         int status = JOptionPane.ERROR_MESSAGE;

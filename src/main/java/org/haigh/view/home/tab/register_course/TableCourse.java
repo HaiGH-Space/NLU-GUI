@@ -21,6 +21,10 @@ public class TableCourse extends JTable {
         this.setDefaultRenderer(Object.class, centerRenderer);
         setSizeCol();
     }
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return columnIndex == 1 ? Boolean.class : String.class;
+    }
     private void setSizeCol() {
         //"","Đăng ký","Mã môn","Tên môn","Số tín chỉ", "Nhóm tổ","Lớp","Số lượng cl","Số lượng lớp","Thời khóa biểu"
         TableColumn column = this.getColumnModel().getColumn(0); // Lấy cột đầu tiên

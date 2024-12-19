@@ -31,6 +31,9 @@ public class LoginController implements ActionListener {
                     Application.setUsername(username);
                     Application.setPassword(password);
                     Application.setStudent(student);
+                    if (loginPage.isRememberMe()) {
+                        Instance.writeAccountJSON(username,password);
+                    }
                     loginPage.getApplication().goToHomePage();
                     return;
                 } else {
