@@ -55,7 +55,7 @@ public class RegistCallAPI   {
                     try {
                         RegisterCourse registerCourse = api.dkmh(auth, (String) o[0], (Boolean) o[1]);
                         if (registerCourse.isIs_thanh_cong()) {
-                            JOptionPane.showMessageDialog(frame, "Đăng ký môn: " + o[3] + " thành công\n" + registerCourse.getKet_qua_dang_ky().getNgay_dang_ky(), "Thành công", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(frame, "Đăng ký môn: " + o[3] + " thành công\n" + registerCourse.getKet_qua_dang_ky().getNgay_dang_ky(), "Thành công", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             JOptionPane.showMessageDialog(frame, "Đăng ký môn: " + o[3] + "\n" + registerCourse.getThong_bao_loi() , "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
