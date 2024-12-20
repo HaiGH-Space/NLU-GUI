@@ -17,9 +17,10 @@ public class FooterPanel extends APanel {
 
     @Override
     public void init() {
-        this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         setPreferredSize(new Dimension(0, 50));
         btnRefresh = new JButton("Làm mới");
+        this.add(Box.createHorizontalGlue());
         this.add(btnRefresh);
     }
 

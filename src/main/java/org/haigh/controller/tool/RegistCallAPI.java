@@ -15,11 +15,12 @@ import java.util.List;
 
 public class RegistCallAPI   {
     JFrame frame;
-
+    API api;
     public RegistCallAPI(JFrame frame){
         this.frame = frame;
     }
     public void call(List<Object[]> data,int delay, int loop) {
+         api = new API();
         Timer timer = new Timer(delay, new ActionListener() {
             private int count = 0;
             @Override
@@ -43,7 +44,7 @@ public class RegistCallAPI   {
         }
         @Override
         protected Void doInBackground() throws Exception {
-                API api = Instance.API;
+
                 Student student = api.login(Application.getUsername(), Application.getPassword());
                 if (student == null) {
                     throw new IOException("Đăng nhập không thành công");

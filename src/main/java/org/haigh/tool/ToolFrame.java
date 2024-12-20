@@ -79,8 +79,8 @@ public class ToolFrame extends AFrame implements BaseUI,ObserverTool, INotifyObs
         NumberFormatter formatter = new NumberFormatter(format);
         formatter.setValueClass(Integer.class);
         formatter.setMinimum(0); // Giá trị tối thiểu
-        formatter.setMaximum(100); // Giá trị tối đa
-        formatter.setAllowsInvalid(false);
+        formatter.setMaximum(1000); // Giá trị tối đa
+        formatter.setAllowsInvalid(true);
         formatter.setCommitsOnValidEdit(true);
         secondField = new JFormattedTextField(formatter);
         secondField.setValue(1000);

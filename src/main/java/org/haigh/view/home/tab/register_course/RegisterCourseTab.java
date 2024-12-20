@@ -1,16 +1,18 @@
 package org.haigh.view.home.tab.register_course;
 
 import org.haigh.controller.INotifyObs;
-import org.haigh.controller.register_course.CheckBoxCourseController;
 import org.haigh.controller.register_course.OpenToolController;
 import org.haigh.controller.register_course.RefreshCourseController;
-
 import org.haigh.view.APanel;
 import org.haigh.view.Application;
 import org.haigh.view.footer.FooterPanel;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.util.List;
 
@@ -51,6 +53,39 @@ public class RegisterCourseTab extends APanel implements INotifyObs {
 //        checkBoxCourseController = new CheckBoxCourseController(this);
         footerPanel = new FooterPanel(application,refreshCourseController);
         footerPanel.add(btnOpenTool);
+        JTextField searchField = new JTextField(15);
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tableCourse.getModel());
+        tableCourse.setRowSorter(rowSorter);
+
+// Thêm listener cho searchField
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = searchField.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text)); // (?i) để không phân biệt hoa thường
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = searchField.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+        footerPanel.add(new JLabel("Tìm kiếm"));
+        footerPanel.add(searchField);
         this.add(scrollPane, BorderLayout.CENTER);
         this.add(footerPanel,BorderLayout.SOUTH);
 
