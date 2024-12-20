@@ -25,7 +25,7 @@ public class LoginController implements ActionListener {
         int status = JOptionPane.ERROR_MESSAGE;
         if (!(username.isBlank() || password.isBlank() || password.isEmpty() || username.isEmpty())) {
             try {
-                API api = Instance.API;
+                API api = new API();
                 Student student =  api.login(username,password);
                 if (student != null) {
                     Application.setUsername(username);
