@@ -37,7 +37,7 @@ public class RefreshCourseController extends ACourseController implements IRefre
                 List<Subject> subjects = informationCenter.getDs_mon_hoc();
                 for (Group group : groups) {
                     //  {"","Đăng ký","Mã môn","Tên môn","Số tín chỉ", "Nhóm tổ","Lớp","Số lượng cl","Số lượng lớp","Thời khóa biểu"}
-                    model.addRow(new Object[]{group.getId_mon(), group.isIs_dk(), group.getMa_mon(), getTenMonByID(subjects, group.getMa_mon()), group.getSo_tc(), group.getNhom_to(), group.getLop(), group.getSl_cl(), group.getSl_cp(), group.getTkb()});
+                    model.addRow(new Object[]{group.getId_to_hoc(), group.isIs_dk(), group.getMa_mon(), getTenMonByID(subjects, group.getMa_mon()), group.getSo_tc(), group.getNhom_to(), group.getLop(), group.getSl_cl(), group.getSl_cp(), group.getTkb()});
                 }
             } else {
                 message = "Không tìm thấy danh sách!";

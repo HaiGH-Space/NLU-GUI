@@ -134,6 +134,7 @@ public class ToolFrame extends AFrame implements BaseUI,ObserverTool, INotifyObs
                 }
             }
             if (!contain) {
+                System.out.println(message[0]);
                 tableCourseModelNow.addRow(message);
                 tableCourseModelSelected.addRow(message);
                 dataNow.add(message);
