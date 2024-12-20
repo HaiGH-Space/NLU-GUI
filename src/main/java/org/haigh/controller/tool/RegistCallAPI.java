@@ -52,15 +52,20 @@ public class RegistCallAPI   {
 
                 String auth = student.getAuthorization();
                 for (Object[] o : data) {
+                    String huy = "Đăng";
+                    if (!(boolean)o[1]) {
+                        huy = "Hủy đăng";
+                    }
                     try {
                         RegisterCourse registerCourse = api.dkmh(auth, (String) o[0], (Boolean) o[1]);
+
                         if (registerCourse.isIs_thanh_cong()) {
-                            JOptionPane.showMessageDialog(frame, "Đăng ký môn: " + o[3] + " thành công\n" + registerCourse.getKet_qua_dang_ky().getNgay_dang_ky(), "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(frame, huy +" ký môn: " + o[3] + " thành công\n" + registerCourse.getKet_qua_dang_ky().getNgay_dang_ky(), "Thành công", JOptionPane.INFORMATION_MESSAGE);
                         } else {
-                            JOptionPane.showMessageDialog(frame, "Đăng ký môn: " + o[3] + "\n" + registerCourse.getThong_bao_loi() , "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(frame, huy + " ký môn: " + o[3] + "\n" + registerCourse.getThong_bao_loi() , "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (IOException e) {
-                        JOptionPane.showMessageDialog(frame, "Đăng ký môn: " + o[3] + "\ndk: " + o[1] , "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(frame, huy + " ký môn: " + o[3] + "\ndk: " + o[1] , "Lỗi", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 return null;
