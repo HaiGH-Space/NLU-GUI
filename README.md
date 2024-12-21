@@ -3,10 +3,10 @@
 
 Project này là phiên bản UI hiển thị trực quan các API từ [API-NLU-JAVA](https://github.com/HaiGH-Space/API-NLU-JAVA) để xây dựng. Ứng dụng này giúp đăng ký hoặc hủy môn học 1 cách tự động do bạn thiết lập, chỉ cần **one click** mọi thứ bạn làm chỉ là chờ đợi kết quả!!!
 
+### Discord: https://discord.gg/a2FY4V6uBb
+
 > [!NOTE]\
 > Đây chỉ là phiên bản beta bắt đầu với v0.0.X-Snapshot
-
-### Discord: https://discord.gg/a2FY4V6uBb
 
 
 ## Tech Stack
