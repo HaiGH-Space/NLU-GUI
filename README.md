@@ -6,9 +6,7 @@ Project này là phiên bản UI hiển thị trực quan các API từ [API-NLU
 > [!NOTE]\
 > Đây chỉ là phiên bản beta bắt đầu với v0.0.X-Snapshot
 
-
-
-
+### Discord: https://discord.gg/a2FY4V6uBb
 
 
 ## Tech Stack
