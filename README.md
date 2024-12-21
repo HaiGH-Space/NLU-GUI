@@ -55,7 +55,7 @@ Hoặc tải bản mới nhất ở đây: [v.0.0.3-Snapshot](https://github.com
 
 ## Usage
 
-**Đang cập nhật**
+**[Hướng dẫn sử dụng](HDSD.md)**
 ## FAQ
 
 #### Sử dụng dkmh bằng app liệu nhà trường có khóa không?
